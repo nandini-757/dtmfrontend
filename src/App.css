@@ -1,0 +1,233 @@
+/* App.css */
+
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f0f8f1, #d5f5e9); /* Soft green gradient background */
+  color: #333; /* Dark text for better readability */
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-y: auto; /* Enable vertical scrolling */
+  animation: backgroundAnimation 10s ease-in-out infinite; /* Subtle background animation */
+}
+
+/* Keyframe animation for background */
+@keyframes backgroundAnimation {
+  0% {
+    background: linear-gradient(135deg, #f0f8f1, #d5f5e9);
+  }
+  50% {
+    background: linear-gradient(135deg, #a9dfbf, #f0f8f1); /* Lighter green and beige */
+  }
+  100% {
+    background: linear-gradient(135deg, #f0f8f1, #d5f5e9);
+  }
+}
+
+/* Form container - using Flexbox for side-by-side layout */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  min-height: 100vh; /* Make sure container takes at least the full height of the screen */
+  flex-direction: column; /* Allow the layout to be column-based when scrolling */
+}
+
+/* Left side - Form */
+form {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* White background with transparency for form */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border: 1px solid #e4e4e4;
+  z-index: 2;
+  animation: slideInUp 1s ease-out; /* Animation for form to slide up */
+}
+
+/* Slide-in animation for form */
+@keyframes slideInUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Right side - Explanation/Result */
+.results {
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+  z-index: 2;
+  visibility: hidden; /* Hide results initially */
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s ease-in-out; /* Smooth transition for results */
+}
+
+/* Show the results after form submission */
+.results.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Input Fields */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #d1d8d3;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+  transition: background-color 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #4d8b31;
+  box-shadow: 0 0 5px rgba(77, 139, 49, 0.3);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4d8b31;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3a6e25;
+}
+
+/* Error Message */
+p[style="color: red"] {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+/* Prediction Results */
+div > h3 {
+  text-align: center;
+  color: #4d8b31;
+}
+
+div {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+div > p {
+  font-size: 18px;
+  text-align: center;
+  color: #555;
+}
+
+/* Select Dropdown */
+select {
+  background-color: #f7f7f7;
+  border: 1px solid #d1d8d3;
+}
+
+select:focus {
+  border-color: #4d8b31;
+}
+
+/* Background Elements */
+#background-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Animating background images (farm elements) */
+@keyframes backgroundFarmElements {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.farm-background {
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -2;
+  animation: backgroundFarmElements 20s linear infinite; /* Rotating farm elements animation */
+}
+
+.farm-background img {
+  width: 500px;
+  height: auto;
+  opacity: 0.3;
+}
+
+.farm-background img:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.farm-background img:nth-child(2) {
+  animation-delay: 5s;
+}
+
+.farm-background img:nth-child(3) {
+  animation-delay: 10s;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  .results {
+    margin-left: 0;
+  }
+}
